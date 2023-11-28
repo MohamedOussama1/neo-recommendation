@@ -1,6 +1,5 @@
-package ma.uiass.eia.gisiba.jobrecommendation.model.nodes;
+package ma.uiass.eia.gisiba.jobrecommendation.model;
 
-import ma.uiass.eia.gisiba.jobrecommendation.model.relationships.Application;
 import org.neo4j.ogm.annotation.*;
 
 import java.time.LocalDate;
@@ -20,8 +19,6 @@ public class User {
     private  char gender;
     @Relationship(type = "OFFERS")
     private List<Job> offeredJobs = new ArrayList<>();
-    @Relationship(type = "APPLIES_TO")
-    private Application appliedTo;
     @Relationship(type = "WORKS_AS")
     private List<Job> currentJobs = new ArrayList<>();
     @Relationship(type = "HAS")
@@ -78,10 +75,6 @@ public class User {
         this.offeredJobs = offeredJobs;
     }
 
-    public void setAppliedTo(Application appliedTo) {
-        this.appliedTo = appliedTo;
-    }
-
     public void setCurrentJobs(List<Job> currentJobs) {
         this.currentJobs = currentJobs;
     }
@@ -117,27 +110,18 @@ public class User {
     public LocalDate getBirthday() {
         return birthday;
     }
-
     public String getEmail() {
         return email;
     }
-
     public String getAddress() {
         return address;
     }
-
     public List<Job> getOfferedJobs() {
         return offeredJobs;
     }
-
     public List<Job> getCurrentJobs() {
         return currentJobs;
     }
-
-    public Application getAppliedTo() {
-        return appliedTo;
-    }
-
     public Skill getSkill() {
         return skill;
     }

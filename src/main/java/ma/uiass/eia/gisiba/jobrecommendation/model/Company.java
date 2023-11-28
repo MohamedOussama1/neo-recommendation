@@ -1,4 +1,4 @@
-package ma.uiass.eia.gisiba.jobrecommendation.model.nodes;
+package ma.uiass.eia.gisiba.jobrecommendation.model;
 
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;

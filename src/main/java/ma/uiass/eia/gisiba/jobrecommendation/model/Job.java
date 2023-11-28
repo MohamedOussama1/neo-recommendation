@@ -1,5 +1,7 @@
-package ma.uiass.eia.gisiba.jobrecommendation.model.nodes;
+package ma.uiass.eia.gisiba.jobrecommendation.model;
 
+import ma.uiass.eia.gisiba.jobrecommendation.model.Company;
+import ma.uiass.eia.gisiba.jobrecommendation.model.Skill;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
