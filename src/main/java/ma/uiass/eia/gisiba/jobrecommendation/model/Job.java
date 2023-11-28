@@ -14,7 +14,7 @@ public class Job {
     private final String description;
     private final double estimatedSalary;
     private final int estimatedMonths;
-     @Relationship(type = "REQUIRES")
+    @Relationship(type = "REQUIRES")
     List<Skill> requiredSkills = new ArrayList<>();
     @Relationship(type = "CONCERNS")
     Company company;
@@ -24,6 +24,14 @@ public class Job {
         this.description = description;
         this.estimatedSalary = estimatedSalary;
         this.estimatedMonths = estimatedMonths;
+    }
+
+    public void setRequiredSkills(List<Skill> requiredSkills) {
+        this.requiredSkills = requiredSkills;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public String getTitle() {
