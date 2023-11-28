@@ -1,29 +1,27 @@
-package ma.uiass.eia.gisiba.jobrecommendation.model;
+package ma.uiass.eia.gisiba.jobrecommendation.model.nodes;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import ma.uiass.eia.gisiba.jobrecommendation.model.relationships.Application;
+import org.neo4j.ogm.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Node
+@NodeEntity
 public class User {
-    @Id @GeneratedValue(GeneratedValue.UUIDGenerator.class)
-    private final Long id;
+    @Id @GeneratedValue()
+    private  Long id;
 
-    private final String firstName;
-    private final String lastName;
-    private final LocalDate birthday;
-    private final String email;
-    private final String address;
-    private final char gender;
+    private  String firstName;
+    private  String lastName;
+    private  LocalDate birthday;
+    private  String email;
+    private  String address;
+    private  char gender;
     @Relationship(type = "OFFERS")
     private List<Job> offeredJobs = new ArrayList<>();
     @Relationship(type = "APPLIES_TO")
-    private List<Job> appliedJobs = new ArrayList<>();
+    private Application appliedTo;
     @Relationship(type = "WORKS_AS")
     private List<Job> currentJobs = new ArrayList<>();
     @Relationship(type = "HAS")
@@ -35,6 +33,9 @@ public class User {
     @Relationship(type = "HAS")
     private List<Education> education = new ArrayList<>();
 
+    public User() {
+    }
+
     public User(Long id, String firstName, String lastName, LocalDate birthday, String email, String address, char gender) {
         this.id = id;
         this.firstName = firstName;
@@ -43,6 +44,62 @@ public class User {
         this.email = email;
         this.address = address;
         this.gender = gender;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public void setOfferedJobs(List<Job> offeredJobs) {
+        this.offeredJobs = offeredJobs;
+    }
+
+    public void setAppliedTo(Application appliedTo) {
+        this.appliedTo = appliedTo;
+    }
+
+    public void setCurrentJobs(List<Job> currentJobs) {
+        this.currentJobs = currentJobs;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public void setInterest(Interest interest) {
+        this.interest = interest;
+    }
+
+    public void setExperience(List<Experience> experience) {
+        this.experience = experience;
+    }
+
+    public void setEducation(List<Education> education) {
+        this.education = education;
     }
 
     public Long getId() {
@@ -73,12 +130,12 @@ public class User {
         return offeredJobs;
     }
 
-    public List<Job> getAppliedJobs() {
-        return appliedJobs;
-    }
-
     public List<Job> getCurrentJobs() {
         return currentJobs;
+    }
+
+    public Application getAppliedTo() {
+        return appliedTo;
     }
 
     public Skill getSkill() {
