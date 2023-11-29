@@ -1,10 +1,18 @@
 package ma.uiass.eia.gisiba.jobrecommendation.model;
 
-import org.neo4j.ogm.annotation.Id;
+import lombok.Builder;
+import lombok.Data;
+import lombok.ToString;
 import org.neo4j.ogm.annotation.NodeEntity;
-@NodeEntity
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+
+@Node
+@Data
+@ToString
 public class Company {
     @Id
+    private Long id;
     private  String title;
     private  String address;
     private  String email;
@@ -18,36 +26,5 @@ public class Company {
     }
     public Company(){}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
 }

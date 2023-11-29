@@ -1,9 +1,14 @@
 package ma.uiass.eia.gisiba.jobrecommendation.model;
 
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
+import lombok.Builder;
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 
-@NodeEntity
+@Node
+@Data
+@ToString
 public class Skill {
     @Id
     private String title;
@@ -11,13 +16,5 @@ public class Skill {
         this.title = title;
     }
     public Skill(){
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
     }
 }

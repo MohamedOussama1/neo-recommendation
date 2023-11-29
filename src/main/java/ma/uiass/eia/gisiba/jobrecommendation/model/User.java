@@ -1,16 +1,22 @@
 package ma.uiass.eia.gisiba.jobrecommendation.model;
 
-import org.neo4j.ogm.annotation.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@NodeEntity
+@Node
+@Data
+@ToString
 public class User {
-    @Id @GeneratedValue()
+    @Id
     private  Long id;
-
     private  String firstName;
     private  String lastName;
     private  LocalDate birthday;
@@ -22,7 +28,7 @@ public class User {
     @Relationship(type = "WORKS_AS")
     private List<Job> currentJobs = new ArrayList<>();
     @Relationship(type = "HAS")
-    private Skill skill;
+    private List<Skill> skills;
     @Relationship(type = "HAS")
     private Interest interest;
     @Relationship(type = "HAS")
@@ -41,105 +47,6 @@ public class User {
         this.email = email;
         this.address = address;
         this.gender = gender;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public void setOfferedJobs(List<Job> offeredJobs) {
-        this.offeredJobs = offeredJobs;
-    }
-
-    public void setCurrentJobs(List<Job> currentJobs) {
-        this.currentJobs = currentJobs;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
-    public void setInterest(Interest interest) {
-        this.interest = interest;
-    }
-
-    public void setExperience(List<Experience> experience) {
-        this.experience = experience;
-    }
-
-    public void setEducation(List<Education> education) {
-        this.education = education;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public List<Job> getOfferedJobs() {
-        return offeredJobs;
-    }
-    public List<Job> getCurrentJobs() {
-        return currentJobs;
-    }
-    public Skill getSkill() {
-        return skill;
-    }
-
-    public Interest getInterest() {
-        return interest;
-    }
-
-    public char getGender() {
-        return gender;
-    }
-
-    public List<Experience> getExperience() {
-        return experience;
-    }
-
-    public List<Education> getEducation() {
-        return education;
     }
 }
 

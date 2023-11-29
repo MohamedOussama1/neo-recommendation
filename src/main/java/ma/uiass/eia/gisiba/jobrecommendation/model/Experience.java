@@ -1,16 +1,18 @@
 package ma.uiass.eia.gisiba.jobrecommendation.model;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-
+import lombok.Builder;
+import lombok.Data;
+import lombok.ToString;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 import java.time.LocalDate;
 
-@NodeEntity
+@Node
+@Data
+@ToString
 public class Experience {
     @Id
-    @GeneratedValue
     private  Long id;
     private  LocalDate startDate;
     private  LocalDate endDate;
@@ -25,45 +27,5 @@ public class Experience {
         this.endDate = endDate;
     }
     public Experience(){
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public void setSkill(Skill skill) {
-        this.skill = skill;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public Skill getSkill() {
-        return skill;
     }
 }
